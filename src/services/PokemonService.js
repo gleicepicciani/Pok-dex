@@ -1,4 +1,3 @@
-import Pokemons from './Base'
 import Api from "./Api"
 
 /*
@@ -14,7 +13,7 @@ const pegarPokemons  = () => Api.get('/')
 
 
 const pegarPokemon = id => Api.get('/')
-    .then(resposta => resposta.data.filter(id))
+    .then(resposta => resposta.data.find(pokemon => pokemon.id == id))
     
 
 export {pegarPokemons, pegarPokemon}

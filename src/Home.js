@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Icon from 'react-native-ionicons'
-import {StyleSheet, View, ScrollView, Text, TextInput, Image, ActivityIndicator, FlatList} from 'react-native'
+import {StyleSheet, View, Text, TextInput, Image, ActivityIndicator, FlatList} from 'react-native'
 
 import PokemonCard from './PokemonCard'
 import {pegarPokemons} from './services/PokemonService'
@@ -64,13 +64,6 @@ const App = props => {
     carregarDados()
   }, []);
   
-/*
-  const carregarDados = () => {
-    console.log('carregarDados')
-    setData(pegarPokemons)
-    setLoading(false)
-  }*/
-
   const carregarDados = () => { 
     pegarPokemons()
     .then(pokemons =>{
@@ -107,7 +100,8 @@ const App = props => {
     return (
       <PokemonCard
         id={props.item.id}
-        name={props.item.name} image={props.item.image}
+        name={props.item.name} 
+        image={props.item.image}
         types={props.item.types}
         onPress={abrirDetalhe}
         description={props.item.description}
@@ -136,11 +130,13 @@ const App = props => {
     }
   }
 
+  /*
   if (loading) {
     return jsxLoading()
   } else {
     return jsxPokemon()
-  }
+  }*/
+  return loading ? jsxLoading() : jsxPokemon();
 };
 
 export default App;
